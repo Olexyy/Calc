@@ -13,39 +13,118 @@ namespace Calculator
     public partial class CalculatorForm : Form
     {
         private string Input { get; set; }
-        private char[] Allowed { get { return new char[] { '(', ')', ',', '.', '+', '-', '*', '/', ' ' }; } }
+        private string Memory { get; set; }
         private bool ExtendedMode { get; set; }
         public CalculatorForm()
         {
             InitializeComponent();
         }
-        private void TrimInput()
-        {
-            this.Input = new string(this.Input.ToCharArray().Where(c => !Char.IsWhiteSpace(c)).ToArray());
-        }
-        private bool ValidateInput()
-        {
-            bool error = false;
-            int open = 0;
-            int close = 0;
-            foreach (char symbol in this.Input)
-            {
-                if (!(Char.IsDigit(symbol) || this.Allowed.Contains(symbol)))
-                    error = true;
-                if (symbol == '(')
-                    open++;
-                if (symbol == ')')
-                    close++;
-            }
-            return ((open == close) && (!error));
-        }
-
         private void textBoxExpression_TextChanged(object sender, EventArgs e)
         {
             if (this.Input.Contains('(') || this.Input.Contains(')'))
                 this.ExtendedMode = true;
             else
                 this.ExtendedMode = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button0_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDivide_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMultiply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMinus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPlus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonNegate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMod_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMemoryRecall_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMemoryPlus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMemoryClear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonCalculate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
