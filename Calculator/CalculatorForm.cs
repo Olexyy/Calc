@@ -15,9 +15,11 @@ namespace Calculator
         private string Input { get; set; }
         private string Memory { get; set; }
         private bool ExtendedMode { get; set; }
+        private CalculatorBase Base { get; set; }
         public CalculatorForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.Base = new CalculatorBase();
         }
         private void textBoxExpression_TextChanged(object sender, EventArgs e)
         {
