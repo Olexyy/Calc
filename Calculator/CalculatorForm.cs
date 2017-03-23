@@ -12,35 +12,13 @@ namespace Calculator
 {
     public partial class CalculatorForm : Form
     {
-        private string Input { get; set; }
         private string Memory { get; set; }
         private bool ExtendedMode { get; set; }
-        private string Cache { get; set; }
-        private bool Triggered { get; set; }
         private CalculatorBase Base { get; set; }
         public CalculatorForm()
         {
             this.InitializeComponent();
             this.Base = new CalculatorBase();
-            this.Input = String.Empty;
-        }
-        private void textBoxExpression_TextChanged(object sender, EventArgs e)
-        {
-            if(this.Input != null)
-            {
-                if (this.Input.Contains('(') || this.Input.Contains(')'))
-                    this.ExtendedMode = true;
-                else
-                    this.ExtendedMode = false;
-                this.Input = this.textBoxExpression.Text;
-            }
-        }
-
-        private void Trigger()
-        {
-            this.Cache = this.Input;
-            this.Input = String.Empty;
-            this.Triggered = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,91 +71,55 @@ namespace Calculator
             this.textBoxExpression.Text += "0";
         }
 
-        private void buttonDivide_Click(object sender, EventArgs e)
+        public void Classical(string symbol)
         {
-            if(this.Input != String.Empty)
+            if (String.IsNullOrEmpty(this.textBoxResult.Text))
             {
-                if (!this.Triggered)
+                this.labelOperator.Text = symbol;
+                this.textBoxResult.Text = this.textBoxExpression.Text;
+                this.textBoxExpression.Text = String.Empty;
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(this.textBoxExpression.Text))
                 {
-                    this.labelOperator.Text = "/";
-                    this.Trigger();
-                }
-                else
-                {
-                    // do math to cache(show in disabled input) with existing operator and then trigger
-                    this.Trigger();
+                    string expression = this.textBoxResult.Text + this.labelOperator.Text + this.textBoxExpression.Text;
+                    // do math to expression on var expression
+                    this.textBoxExpression.Text = String.Empty;
+                    this.textBoxResult.Text = String.Empty; ///result of maths
+                    this.labelOperator.Text = symbol;
                 }
             }
+        }
+
+        private void buttonDivide_Click(object sender, EventArgs e)
+        {
+            this.Classical("/");
         }
 
         private void buttonMultiply_Click(object sender, EventArgs e)
         {
-            if (!this.Triggered)
-            {
-                this.labelOperator.Text = "*";
-                this.Trigger();
-            }
-            else
-            {
-                // do math to cache(show in disabled input) with existing operator and then trigger
-                this.Trigger();
-            }
+            this.Classical("*");
         }
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
-            if (!this.Triggered)
-            {
-                this.labelOperator.Text = "-";
-                this.Trigger();
-            }
-            else
-            {
-                // do math to cache(show in disabled input) with existing operator and then trigger
-                this.Trigger();
-            }
+            this.Classical("-");
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            if (!this.Triggered)
-            {
-                this.labelOperator.Text = "+";
-                this.Trigger();
-            }
-            else
-            {
-                // do math to cache(show in disabled input) with existing operator and then trigger
-                this.Trigger();
-            }
+            this.Classical("+");
         }
 
         private void buttonNegate_Click(object sender, EventArgs e)
         {
-            if (!this.Triggered)
-            {
-                this.labelOperator.Text = "-";
-                this.Trigger();
-            }
-            else
-            {
-                // do math to cache(show in disabled input) with existing operator and then trigger
-                this.Trigger();
-            }
+            this.Classical("-");
         }
 
         private void buttonMod_Click(object sender, EventArgs e)
         {
-            if (!this.Triggered)
-            {
-                this.labelOperator.Text = "%";
-                this.Trigger();
-            }
-            else
-            {
-                // do math to cache(show in disabled input) with existing operator and then trigger
-                this.Trigger();
-            }
+            this.Classical("%");
         }
 
         private void buttonMemoryRecall_Click(object sender, EventArgs e)
