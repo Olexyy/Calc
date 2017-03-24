@@ -44,42 +44,50 @@ namespace Calculator
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Input = "3";
+            textBoxExpression.Text += Input;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            Input = "4";
+            textBoxExpression.Text += Input;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Input = "5";
+            textBoxExpression.Text += Input;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            Input = "6";
+            textBoxExpression.Text += Input;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            Input = "7";
+            textBoxExpression.Text += Input;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            Input = "8";
+            textBoxExpression.Text += Input;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-
+            Input = "9";
+            textBoxExpression.Text += Input;
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
-
+            Input = "0";
+            textBoxExpression.Text += Input;
         }
 
         private void buttonDivide_Click(object sender, EventArgs e)
