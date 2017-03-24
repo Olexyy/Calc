@@ -23,6 +23,7 @@ namespace Calculator
         }
         private void textBoxExpression_TextChanged(object sender, EventArgs e)
         {
+
             if (this.Input.Contains('(') || this.Input.Contains(')'))
                 this.ExtendedMode = true;
             else
@@ -31,12 +32,14 @@ namespace Calculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Input = "1";
+            textBoxExpression.Text += Input;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Input = "2";
+            textBoxExpression.Text += Input;
         }
 
         private void button3_Click(object sender, EventArgs e)
