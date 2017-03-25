@@ -13,7 +13,7 @@ namespace Calculator
     public partial class CalculatorForm : Form
     {
         private string Input { get; set; }
-        private string Memory { get; set; }
+        private long Memory { get; set; }
         private bool ExtendedMode { get; set; }
         private CalculatorBase Base { get; set; }
         public CalculatorForm()
@@ -128,17 +128,20 @@ namespace Calculator
 
         private void buttonMemoryRecall_Click(object sender, EventArgs e)
         {
-
+            Input =  Memory.ToString();
+            Memory = 0; 
+            textBoxExpression.Text = Input;
         }
 
         private void buttonMemoryPlus_Click(object sender, EventArgs e)
         {
-
+            Memory += Convert.ToInt64(textBoxResult.Text);
+            textBoxResult.Clear();
         }
 
         private void buttonMemoryClear_Click(object sender, EventArgs e)
         {
-
+            Memory = 0;
         }
 
         private void buttonCalculate_Click(object sender, EventArgs e)
