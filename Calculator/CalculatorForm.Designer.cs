@@ -57,8 +57,12 @@
             this.buttonMemoryPlus = new System.Windows.Forms.Button();
             this.buttonMemoryClear = new System.Windows.Forms.Button();
             this.buttonCalculate = new System.Windows.Forms.Button();
+
             this.buttonMemoryMinus = new System.Windows.Forms.Button();
             this.buttonPoint = new System.Windows.Forms.Button();
+
+            this.labelOperator = new System.Windows.Forms.Label();
+
             this.groupBoxEditing.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +82,6 @@
             this.textBoxExpression.Name = "textBoxExpression";
             this.textBoxExpression.Size = new System.Drawing.Size(233, 20);
             this.textBoxExpression.TabIndex = 1;
-            this.textBoxExpression.TextChanged += new System.EventHandler(this.textBoxExpression_TextChanged);
             // 
             // labelResult
             // 
@@ -119,6 +122,7 @@
             this.buttonExReset.TabIndex = 7;
             this.buttonExReset.Text = "Reset";
             this.buttonExReset.UseVisualStyleBackColor = true;
+            this.buttonExReset.Click += new System.EventHandler(this.buttonExReset_Click);
             // 
             // buttonExOpenBracers
             // 
@@ -347,6 +351,7 @@
             this.buttonCalculate.UseVisualStyleBackColor = true;
             this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
             // 
+
             // buttonMemoryMinus
             // 
             this.buttonMemoryMinus.Location = new System.Drawing.Point(265, 174);
@@ -366,12 +371,28 @@
             this.buttonPoint.Text = ".";
             this.buttonPoint.UseVisualStyleBackColor = true;
             this.buttonPoint.Click += new System.EventHandler(this.buttonPoint_Click);
+
+            // labelOperator
+            // 
+            this.labelOperator.AutoSize = true;
+            this.labelOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 3.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOperator.Location = new System.Drawing.Point(288, 1);
+            this.labelOperator.Name = "labelOperator";
+            this.labelOperator.Size = new System.Drawing.Size(6, 6);
+            this.labelOperator.TabIndex = 28;
+            this.labelOperator.Text = "   ";
+
             // 
             // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
             this.ClientSize = new System.Drawing.Size(327, 288);
+
+            this.ClientSize = new System.Drawing.Size(322, 288);
+            this.Controls.Add(this.labelOperator);
+
             this.Controls.Add(this.buttonCalculate);
             this.Controls.Add(this.buttonMemoryMinus);
             this.Controls.Add(this.buttonMemoryClear);
@@ -439,8 +460,12 @@
         private System.Windows.Forms.Button buttonMemoryPlus;
         private System.Windows.Forms.Button buttonMemoryClear;
         private System.Windows.Forms.Button buttonCalculate;
+
         private System.Windows.Forms.Button buttonMemoryMinus;
         private System.Windows.Forms.Button buttonPoint;
+
+        private System.Windows.Forms.Label labelOperator;
+
     }
 }
 
