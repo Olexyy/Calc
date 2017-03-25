@@ -138,6 +138,11 @@ namespace Calculator
             Memory += Convert.ToInt64(textBoxResult.Text);
             textBoxResult.Clear();
         }
+        private void buttonMemoryMinus_Click(object sender, EventArgs e)
+        {
+            Memory -= Convert.ToInt64(textBoxResult.Text);
+            textBoxResult.Clear();
+        }
 
         private void buttonMemoryClear_Click(object sender, EventArgs e)
         {
@@ -148,5 +153,14 @@ namespace Calculator
         {
 
         }
+
+        private void buttonPoint_Click(object sender, EventArgs e)
+        {
+
+            Input = ".";
+            textBoxExpression.Text += Input;
+        }
+
+       
     }
 }

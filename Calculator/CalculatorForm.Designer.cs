@@ -57,6 +57,8 @@
             this.buttonMemoryPlus = new System.Windows.Forms.Button();
             this.buttonMemoryClear = new System.Windows.Forms.Button();
             this.buttonCalculate = new System.Windows.Forms.Button();
+            this.buttonMemoryMinus = new System.Windows.Forms.Button();
+            this.buttonPoint = new System.Windows.Forms.Button();
             this.groupBoxEditing.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -287,7 +289,7 @@
             // 
             // buttonMod
             // 
-            this.buttonMod.Location = new System.Drawing.Point(106, 246);
+            this.buttonMod.Location = new System.Drawing.Point(265, 246);
             this.buttonMod.Name = "buttonMod";
             this.buttonMod.Size = new System.Drawing.Size(38, 30);
             this.buttonMod.TabIndex = 22;
@@ -307,7 +309,7 @@
             // 
             // buttonMemoryRecall
             // 
-            this.buttonMemoryRecall.Location = new System.Drawing.Point(266, 138);
+            this.buttonMemoryRecall.Location = new System.Drawing.Point(221, 138);
             this.buttonMemoryRecall.Name = "buttonMemoryRecall";
             this.buttonMemoryRecall.Size = new System.Drawing.Size(38, 30);
             this.buttonMemoryRecall.TabIndex = 24;
@@ -317,7 +319,7 @@
             // 
             // buttonMemoryPlus
             // 
-            this.buttonMemoryPlus.Location = new System.Drawing.Point(266, 174);
+            this.buttonMemoryPlus.Location = new System.Drawing.Point(221, 174);
             this.buttonMemoryPlus.Name = "buttonMemoryPlus";
             this.buttonMemoryPlus.Size = new System.Drawing.Size(38, 30);
             this.buttonMemoryPlus.TabIndex = 25;
@@ -327,7 +329,7 @@
             // 
             // buttonMemoryClear
             // 
-            this.buttonMemoryClear.Location = new System.Drawing.Point(266, 210);
+            this.buttonMemoryClear.Location = new System.Drawing.Point(265, 138);
             this.buttonMemoryClear.Name = "buttonMemoryClear";
             this.buttonMemoryClear.Size = new System.Drawing.Size(38, 30);
             this.buttonMemoryClear.TabIndex = 26;
@@ -337,7 +339,7 @@
             // 
             // buttonCalculate
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(266, 246);
+            this.buttonCalculate.Location = new System.Drawing.Point(221, 246);
             this.buttonCalculate.Name = "buttonCalculate";
             this.buttonCalculate.Size = new System.Drawing.Size(38, 30);
             this.buttonCalculate.TabIndex = 27;
@@ -345,16 +347,38 @@
             this.buttonCalculate.UseVisualStyleBackColor = true;
             this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
             // 
+            // buttonMemoryMinus
+            // 
+            this.buttonMemoryMinus.Location = new System.Drawing.Point(265, 174);
+            this.buttonMemoryMinus.Name = "buttonMemoryMinus";
+            this.buttonMemoryMinus.Size = new System.Drawing.Size(38, 30);
+            this.buttonMemoryMinus.TabIndex = 26;
+            this.buttonMemoryMinus.Text = "M-";
+            this.buttonMemoryMinus.UseVisualStyleBackColor = true;
+            this.buttonMemoryMinus.Click += new System.EventHandler(this.buttonMemoryMinus_Click);
+            // 
+            // buttonPoint
+            // 
+            this.buttonPoint.Location = new System.Drawing.Point(106, 246);
+            this.buttonPoint.Name = "buttonPoint";
+            this.buttonPoint.Size = new System.Drawing.Size(38, 30);
+            this.buttonPoint.TabIndex = 22;
+            this.buttonPoint.Text = ".";
+            this.buttonPoint.UseVisualStyleBackColor = true;
+            this.buttonPoint.Click += new System.EventHandler(this.buttonPoint_Click);
+            // 
             // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 288);
+            this.ClientSize = new System.Drawing.Size(327, 288);
             this.Controls.Add(this.buttonCalculate);
+            this.Controls.Add(this.buttonMemoryMinus);
             this.Controls.Add(this.buttonMemoryClear);
             this.Controls.Add(this.buttonMemoryPlus);
             this.Controls.Add(this.buttonMemoryRecall);
             this.Controls.Add(this.buttonPlus);
+            this.Controls.Add(this.buttonPoint);
             this.Controls.Add(this.buttonMod);
             this.Controls.Add(this.button0);
             this.Controls.Add(this.buttonNegate);
@@ -415,6 +439,8 @@
         private System.Windows.Forms.Button buttonMemoryPlus;
         private System.Windows.Forms.Button buttonMemoryClear;
         private System.Windows.Forms.Button buttonCalculate;
+        private System.Windows.Forms.Button buttonMemoryMinus;
+        private System.Windows.Forms.Button buttonPoint;
     }
 }
 
