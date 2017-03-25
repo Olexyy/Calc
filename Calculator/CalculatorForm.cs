@@ -13,14 +13,12 @@ namespace Calculator
     public partial class CalculatorForm : Form
     {
         private Double Memory { get; set; }
-        Calculus calc;
         Analyzer analyzer;
 
         public CalculatorForm()
         {
             this.InitializeComponent();
             Memory = 0;
-            calc = new Calculus();
             analyzer = new Analyzer();
         }
 
@@ -150,7 +148,7 @@ namespace Calculator
             bool isDouble = Double.TryParse(textBoxResult.Text, out final);
             if (isDouble)
             {
-                Result rslt = calc.Run(Memory, final, "+");
+                Result rslt = analyzer.MemoryCalculate(Memory, final);
                 if (rslt.errors == String.Empty)
                     Memory = rslt.rslt;
                 else
