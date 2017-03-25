@@ -92,32 +92,38 @@ namespace Calculator
 
         private void buttonDivide_Click(object sender, EventArgs e)
         {
-
+            Input = "/";
+            textBoxExpression.Text += Input;
         }
 
         private void buttonMultiply_Click(object sender, EventArgs e)
         {
-
+            Input = "*";
+            textBoxExpression.Text += Input;
         }
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
-
+            Input = "-";
+            textBoxExpression.Text += Input;
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-
+            Input = "+";
+            textBoxExpression.Text += Input;
         }
 
         private void buttonNegate_Click(object sender, EventArgs e)
         {
-
+            Input = "-"+Input;
+            textBoxExpression.Text += Input;
         }
 
         private void buttonMod_Click(object sender, EventArgs e)
         {
-
+            Input = "%";
+            textBoxExpression.Text += Input;
         }
 
         private void buttonMemoryRecall_Click(object sender, EventArgs e)
