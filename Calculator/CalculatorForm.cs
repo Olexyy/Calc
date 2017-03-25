@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,161 +12,162 @@ namespace Calculator
 {
     public partial class CalculatorForm : Form
     {
+        private Double Memory { get; set; }
+        Calculus calc;
+        Analyzer analyzer;
 
-        private long Memory { get; set; }
-        private bool ExtendedMode { get; set; }
-        private CalculatorBase Base { get; set; }
         public CalculatorForm()
         {
             this.InitializeComponent();
-            this.Base = new CalculatorBase();
+            Memory = 0;
+            calc = new Calculus();
+            analyzer = new Analyzer();
         }
-      
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxExpression.Text = "";
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "1";
+            AddToExpression("1");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "2";
+            AddToExpression("2");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-             this.textBoxExpression.Text += "3";
+            AddToExpression("3");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "4";
+            AddToExpression("4");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "5";
+            AddToExpression("5");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "6";
+            AddToExpression("6");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "7";
+            AddToExpression("7");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "8";
+            AddToExpression("8");
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "9";
+            AddToExpression("9");
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
-            this.textBoxExpression.Text += "0";
+            AddToExpression("0");
         }
 
-        public void Classical(string symbol)
+        private void buttonDiv_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(this.textBoxResult.Text))
-            {
-                this.labelOperator.Text = symbol;
-                this.textBoxResult.Text = this.textBoxExpression.Text;
-                this.textBoxExpression.Text = String.Empty;
-            }
-            else
-            {
-                if (!String.IsNullOrEmpty(this.textBoxExpression.Text))
-                {
-                    string expression = this.textBoxResult.Text + this.labelOperator.Text + this.textBoxExpression.Text;
-                    // do math to expression on var expression
-                    this.textBoxExpression.Text = String.Empty;
-                    this.textBoxResult.Text = String.Empty; ///result of maths
-                    this.labelOperator.Text = symbol;
-                }
-            }
-
+            AddToExpression("/");
         }
 
-        private void buttonDivide_Click(object sender, EventArgs e)
+        private void buttonMult_Click(object sender, EventArgs e)
         {
-            this.Classical("/");
-
+            AddToExpression("*");
         }
 
-        private void buttonMultiply_Click(object sender, EventArgs e)
+        private void buttonMin_Click(object sender, EventArgs e)
         {
-            this.Classical("*");
-        }
-
-        private void buttonMinus_Click(object sender, EventArgs e)
-        {
-            this.Classical("-");
+            AddToExpression("-");
         }
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            this.Classical("+");
-        }
-
-        private void buttonNegate_Click(object sender, EventArgs e)
-        {
-            this.Classical("-");
+            AddToExpression("+");
         }
 
         private void buttonMod_Click(object sender, EventArgs e)
         {
-
-            this.Classical("%");
+            AddToExpression("%");
         }
 
-        private void buttonMemoryRecall_Click(object sender, EventArgs e)
+        private void buttonOpenBracket_Click(object sender, EventArgs e)
         {
-
-            Memory = 0; 
-            textBoxExpression.Text =  Memory.ToString();            
+            AddToExpression("(");
         }
 
-        private void buttonMemoryPlus_Click(object sender, EventArgs e)
+        private void buttonCloseBracket_Click(object sender, EventArgs e)
         {
-
-            Memory += Convert.ToInt64(textBoxResult.Text);
-            textBoxResult.Clear();
+            AddToExpression(")");
         }
-        private void buttonMemoryMinus_Click(object sender, EventArgs e)
+
+        private void buttonNeg_Click(object sender, EventArgs e)
         {
-            Memory -= Convert.ToInt64(textBoxResult.Text);
-            textBoxResult.Clear();
- 
+            textBoxResult.Text = "";
         }
 
-        private void buttonMemoryClear_Click(object sender, EventArgs e)
+        private void buttonEq_Click(object sender, EventArgs e)
+        {
+            if (textBoxExpression.Text.Length < 65535)
+            {                
+                Result result = analyzer.Calculate(textBoxExpression.Text + "@");
+                if (result.errors == String.Empty)
+                    textBoxResult.Text = result.rslt.ToString();
+                else
+                    textBoxResult.Text = result.errors;
+            }
+            else
+                textBoxResult.Text = "Error 07. Too long expression!";
+        }
+
+        private void buttonBackspace_Click(object sender, EventArgs e)
+        {
+            if (textBoxExpression.Text != String.Empty)
+                textBoxExpression.Text = textBoxExpression.Text.Remove(textBoxExpression.Text.Length - 1);
+        }
+
+        private void buttonMR_Click(object sender, EventArgs e)
+        {
+            textBoxExpression.Text = Memory.ToString();
+        }
+
+        private void buttonMPlus_Click(object sender, EventArgs e)
+        {
+            Double final;
+            bool isDouble = Double.TryParse(textBoxResult.Text, out final);
+            if (isDouble)
+            {
+                Result rslt = calc.Run(Memory, final, "+");
+                if (rslt.errors == String.Empty)
+                    Memory = rslt.rslt;
+                else
+                    textBoxResult.Text = rslt.errors;
+            }
+            else
+                textBoxResult.Text = "Wrong parameters";
+        }
+
+        private void buttonMC_Click(object sender, EventArgs e)
         {
             Memory = 0;
         }
 
-        private void buttonCalculate_Click(object sender, EventArgs e)
+        private void AddToExpression(string symbol)
         {
-            // todo: implement
+            textBoxExpression.Text += symbol;
         }
-
-        private void buttonExReset_Click(object sender, EventArgs e)
-        {
-            this.textBoxExpression.Text += String.Empty;
-        }
-
-        private void buttonPoint_Click(object sender, EventArgs e)
-        {
-            textBoxExpression.Text += ".";
-        }
-
-       
     }
 }
